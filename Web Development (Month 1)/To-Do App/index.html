@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster | Premium To-Do List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-globes">
+        <div class="globe globe-1"></div>
+        <div class="globe globe-2"></div>
+        <div class="globe globe-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>My Tasks</h1>
+            <p id="date-display">Today</p>
+        </header>
+
+        <div class="input-group">
+            <input type="text" id="task-input" placeholder="What needs to be done?" autocomplete="off">
+            <button id="add-btn"><i class="fas fa-plus"></i></button>
+        </div>
+
+        <ul id="task-list" class="task-list">
+            <!-- Tasks will be injected here -->
+        </ul>
+        
+        <div class="controls">
+            <span id="items-left">0 items left</span>
+            <button id="clear-completed">Clear Completed</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
