@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Register on Social Network Platform">
+  <title>Register — Social Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="auth-page">
+
+  <div class="auth-container">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon">S</div>
+        <h1>SocialNet</h1>
+      </div>
+      <p class="auth-subtitle">Create your account and join the community.</p>
+
+      <form id="registerForm" class="auth-form" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" placeholder="Choose a username" required autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Create a password" required minlength="4" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" name="bio" placeholder="Tell us about yourself..." rows="3"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="avatar">Profile Picture</label>
+          <div class="file-upload" id="fileUploadArea">
+            <input type="file" id="avatar" name="avatar" accept="image/*">
+            <div class="file-upload-label">
+              <span class="file-upload-icon">📷</span>
+              <span id="fileNameLabel">Choose an image</span>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full" id="registerBtn">Create Account</button>
+      </form>
+
+      <div id="registerError" class="error-message" style="display:none;"></div>
+      <div id="registerSuccess" class="success-message" style="display:none;"></div>
+
+      <p class="auth-switch">
+        Already have an account? <a href="login.html">Log In</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // File name preview
+    document.getElementById('avatar').addEventListener('change', function() {
+      const label = document.getElementById('fileNameLabel');
+      label.textContent = this.files[0] ? this.files[0].name : 'Choose an image';
+    });
+
+    document.getElementById('registerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById('registerError');
+      const successEl = document.getElementById('registerSuccess');
+      errEl.style.display = 'none';
+      successEl.style.display = 'none';
+
+      const formData = new FormData();
+      formData.append('username', document.getElementById('username').value.trim());
+      formData.append('password', document.getElementById('password').value);
+      formData.append('bio', document.getElementById('bio').value.trim());
+      const avatarFile = document.getElementById('avatar').files[0];
+      if (avatarFile) formData.append('avatar', avatarFile);
+
+      try {
+        const res = await fetch('/api/register', { method: 'POST', body: formData });
+        const data = await res.json();
+        if (!res.ok) {
+          errEl.textContent = data.error || 'Registration failed';
+          errEl.style.display = 'block';
+          return;
+        }
+        successEl.textContent = 'Account created! Redirecting to login...';
+        successEl.style.display = 'block';
+        setTimeout(() => { window.location.href = 'login.html'; }, 1500);
+      } catch (err) {
+        errEl.textContent = 'Network error. Please try again.';
+        errEl.style.display = 'block';
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Social Network Dashboard — Your Feed">
+  <title>Dashboard — Social Network</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-page">
+
+  <!-- ── TOP NAV ──────────────────────────────── -->
+  <nav class="topnav">
+    <div class="topnav-left">
+      <div class="logo-icon logo-icon-sm">S</div>
+      <span class="brand-name">SocialNet</span>
+    </div>
+    <div class="topnav-center">
+      <input type="text" id="searchUsers" class="search-input" placeholder="Search people...">
+      <div id="searchResults" class="search-results" style="display:none;"></div>
+    </div>
+    <div class="topnav-right">
+      <button class="icon-btn" id="notifBellBtn" title="Notifications">
+        🔔 <span class="badge" id="notifBadge" style="display:none;">0</span>
+      </button>
+      <div class="user-avatar-sm" id="navAvatar"></div>
+      <span class="nav-username" id="navUsername"></span>
+      <button class="btn btn-outline btn-sm" id="logoutBtn">Log Out</button>
+    </div>
+  </nav>
+
+  <!-- ── MAIN LAYOUT ─────────────────────────── -->
+  <main class="dashboard-layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar sidebar-left">
+      <div class="sidebar-card profile-card">
+        <div class="profile-cover"></div>
+        <img id="profileAvatar" src="" alt="avatar" class="profile-avatar">
+        <h3 id="profileName"></h3>
+        <p id="profileBio" class="text-muted"></p>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="feed">🏠 <span>Home Feed</span></a>
+        <a href="#" class="nav-item" data-section="friends">👥 <span>Friends</span></a>
+        <a href="#" class="nav-item" data-section="profile">👤 <span>My Profile</span></a>
+      </nav>
+
+      <div class="sidebar-card" id="friendsList">
+        <h4>Friends</h4>
+        <div id="friendsListContent" class="friends-mini-list"></div>
+      </div>
+    </aside>
+
+    <!-- CENTER FEED -->
+    <section class="main-feed" id="mainContent">
+
+      <!-- FEED VIEW (default) -->
+      <div id="feedSection">
+        <!-- Post Composer -->
+        <div class="card composer-card">
+          <div class="composer-top">
+            <img id="composerAvatar" src="" alt="" class="avatar-sm">
+            <textarea id="postText" placeholder="What's on your mind?" rows="3"></textarea>
+          </div>
+          <div class="composer-bottom">
+            <div class="composer-actions">
+              <label class="file-btn" for="postImage">📷 Photo</label>
+              <input type="file" id="postImage" accept="image/*" style="display:none;">
+              <span id="postImageName" class="text-muted text-sm"></span>
+              <select id="postPrivacy" class="privacy-select">
+                <option value="public">🌍 Public</option>
+                <option value="friends">🔒 Friends Only</option>
+              </select>
+            </div>
+            <button class="btn btn-primary" id="postBtn">Post</button>
+          </div>
+        </div>
+
+        <!-- Feed -->
+        <div id="feedContainer"></div>
+      </div>
+
+      <!-- FRIENDS VIEW -->
+      <div id="friendsSection" style="display:none;">
+        <div class="card">
+          <h2 class="section-title">Friend Requests</h2>
+          <div id="friendRequestsList"></div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h2 class="section-title">All Users</h2>
+          <div id="allUsersList"></div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+          <h2 class="section-title">My Friends</h2>
+          <div id="myFriendsFullList"></div>
+        </div>
+      </div>
+
+      <!-- PROFILE VIEW -->
+      <div id="profileSection" style="display:none;">
+        <div class="card">
+          <h2 class="section-title">Edit Profile</h2>
+          <form id="editProfileForm" class="auth-form" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="editBio">Bio</label>
+              <textarea id="editBio" rows="3" placeholder="Update your bio..."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="editAvatar">Profile Picture</label>
+              <input type="file" id="editAvatar" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </form>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar sidebar-right">
+      <div class="sidebar-card">
+        <h4>🔔 Notifications</h4>
+        <button class="btn btn-text btn-sm" id="markReadBtn">Mark all read</button>
+        <div id="notificationsPanel" class="notifications-list"></div>
+      </div>
+
+      <div class="sidebar-card">
+        <h4>📨 Friend Requests</h4>
+        <div id="sidebarFriendRequests"></div>
+      </div>
+    </aside>
+
+  </main>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

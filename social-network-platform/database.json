@@ -1,0 +1,59 @@
+{
+  "users": [
+    {
+      "id": "2da60e13-4b0b-4d00-9b95-e779aaa292da",
+      "username": "umar",
+      "password": "pass1234",
+      "bio": "Hello, I'm Umar! I Love coding.",
+      "avatar": "/uploads/picofme.png",
+      "friends": [],
+      "friendRequests": [],
+      "sentRequests": [],
+      "createdAt": "2026-03-13T05:50:23.923Z"
+    }
+  ],
+  "posts": [
+    {
+      "id": "ca3b8248-545a-41cb-ad2b-7e205d5a2261",
+      "authorId": "2da60e13-4b0b-4d00-9b95-e779aaa292da",
+      "text": "Hello world! This is my first post on SocialNet.",
+      "image": null,
+      "privacy": "public",
+      "likes": [
+        "2da60e13-4b0b-4d00-9b95-e779aaa292da"
+      ],
+      "comments": [
+        {
+          "id": "0544c2de-a921-42e2-b0ff-846fd0c50d2d",
+          "userId": "2da60e13-4b0b-4d00-9b95-e779aaa292da",
+          "username": "alice",
+          "avatar": "/uploads/default-avatar.png",
+          "text": "This is a great platform!",
+          "createdAt": "2026-03-13T05:52:20.505Z"
+        },
+        {
+          "id": "a35acf15-3594-4ce5-a530-99ba2ab1f680",
+          "userId": "2da60e13-4b0b-4d00-9b95-e779aaa292da",
+          "username": "umar",
+          "avatar": "/uploads/picofme.png",
+          "text": "Hello",
+          "createdAt": "2026-03-18T12:25:24.640Z"
+        }
+      ],
+      "createdAt": "2026-03-13T05:51:43.197Z"
+    },
+    {
+      "id": "d2e7aec7-c1d4-463c-b062-120e30dc184f",
+      "authorId": "2da60e13-4b0b-4d00-9b95-e779aaa292da",
+      "text": "Hello world!",
+      "image": null,
+      "privacy": "public",
+      "likes": [
+        "2da60e13-4b0b-4d00-9b95-e779aaa292da"
+      ],
+      "comments": [],
+      "createdAt": "2026-03-18T12:25:39.091Z"
+    }
+  ],
+  "notifications": []
+}
