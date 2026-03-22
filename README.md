@@ -43,5 +43,5 @@ A simplified social media application with:
 Umar Nadeem  
 COMSATS University Islamabad, Sahiwal Campus
 
-LinkedIn: [Add your link]
+LinkedIn: https://www.linkedin.com/in/umarnadeemdev/
 GitHub: https://github.com/umarnadeem-dev
