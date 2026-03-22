@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="VibePlayer — A modern, Spotify-inspired web music player built with vanilla HTML, CSS, and JavaScript." />
+  <title>VibePlayer — Web Music Player</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- ─── App Layout ─────────────────────────────────────── -->
+  <div class="app-layout">
+
+    <!-- ─── Sidebar ────────────────────────────────────── -->
+    <aside id="sidebar" class="sidebar">
+
+      <!-- Logo -->
+      <div class="sidebar-header">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <span class="logo-text">VibePlayer</span>
+        </a>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="categories">
+        <h3 class="categories-title">Browse</h3>
+        <div class="categories-list">
+          <button class="category-btn active" data-category="All">All</button>
+          <button class="category-btn" data-category="Pop">Pop</button>
+          <button class="category-btn" data-category="Rock">Rock</button>
+          <button class="category-btn" data-category="Chill">Chill</button>
+          <button class="category-btn" data-category="Instrumental">Instrumental</button>
+        </div>
+      </div>
+
+      <!-- Playlist -->
+      <div class="playlist-section">
+        <h3 class="playlist-title">Your Library</h3>
+        <div id="playlist" class="playlist">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Sidebar Overlay (mobile) -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+
+    <!-- ─── Main Content ───────────────────────────────── -->
+    <div class="main-content">
+
+      <!-- Top Bar -->
+      <header class="topbar">
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="search-wrapper">
+          <input id="search-input" type="text" class="search-input" placeholder="Search songs or artists..."
+            autocomplete="off" />
+          <i class="fas fa-search search-icon"></i>
+        </div>
+      </header>
+
+      <!-- Hero / Now Playing -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-album-art-wrapper">
+            <img id="hero-album-art" class="hero-album-art" src="https://picsum.photos/seed/midnight/200" alt="Album Art" />
+          </div>
+          <div class="hero-info">
+            <h1 id="hero-title">Midnight Dreams</h1>
+            <p id="hero-artist">Luna Wave</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- ─── Bottom Player Bar ──────────────────────────────── -->
+  <footer class="player-bar">
+
+    <!-- Song Info -->
+    <div class="player-song-info">
+      <img id="album-art" class="player-album-art" src="https://picsum.photos/seed/midnight/200" alt="Album Art" />
+      <div class="player-song-details">
+        <div id="song-title" class="player-song-title">Midnight Dreams</div>
+        <div id="song-artist" class="player-song-artist">Luna Wave</div>
+      </div>
+    </div>
+
+    <!-- Player Controls -->
+    <div class="player-controls">
+      <div class="control-buttons">
+        <button id="prev-btn" class="control-btn" aria-label="Previous">
+          <i class="fas fa-backward-step"></i>
+        </button>
+        <button id="play-pause-btn" class="control-btn play-btn" aria-label="Play">
+          <i class="fas fa-play"></i>
+        </button>
+        <button id="next-btn" class="control-btn" aria-label="Next">
+          <i class="fas fa-forward-step"></i>
+        </button>
+      </div>
+      <div class="progress-wrapper">
+        <span id="current-time" class="time-display">0:00</span>
+        <div id="progress-bar" class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+          <div id="progress-thumb" class="progress-thumb"></div>
+        </div>
+        <span id="total-time" class="time-display">0:00</span>
+      </div>
+    </div>
+
+    <!-- Volume -->
+    <div class="player-volume">
+      <button class="volume-btn" aria-label="Volume">
+        <i id="volume-icon" class="fas fa-volume-up"></i>
+      </button>
+      <div id="volume-slider" class="volume-slider">
+        <div id="volume-fill" class="volume-fill"></div>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- ─── Scripts (order matters) ─────────────────────────── -->
+  <script src="js/songs.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
